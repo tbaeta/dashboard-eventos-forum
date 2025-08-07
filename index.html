@@ -742,7 +742,7 @@
                 };
                 
                 data.forEach(p => {
-                    if (!p.cargo) {
+                    if (!p.cargo || typeof p.cargo !== 'string') {
                         categories['Outros']++;
                         return;
                     }
