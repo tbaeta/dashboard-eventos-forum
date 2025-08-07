@@ -481,20 +481,22 @@
                     const standardRow = {};
                     
                     Object.keys(row).forEach(key => {
-                        const lowerKey = key.toLowerCase();
+                        const lowerKey = key.toLowerCase().replace(/[_\s]/g, '');
                         
-                        if (lowerKey.includes('nome') || lowerKey.includes('name')) {
+                        if (lowerKey.includes('nome') || lowerKey.includes('name') || lowerKey.includes('completo')) {
                             standardRow.nome = row[key];
                         } else if (lowerKey.includes('email')) {
                             standardRow.email = row[key];
-                        } else if (lowerKey.includes('empresa') || lowerKey.includes('company')) {
+                        } else if (lowerKey.includes('empresa') || lowerKey.includes('company') || lowerKey.includes('organizacao')) {
                             standardRow.empresa = row[key];
-                        } else if (lowerKey.includes('cargo') || lowerKey.includes('position')) {
+                        } else if (lowerKey.includes('cargo') || lowerKey.includes('position') || lowerKey.includes('funcao')) {
                             standardRow.cargo = row[key];
-                        } else if (lowerKey.includes('data') || lowerKey.includes('date')) {
+                        } else if (lowerKey.includes('data') || lowerKey.includes('date') || lowerKey.includes('inscricao')) {
                             standardRow.data = row[key];
                         } else if (lowerKey.includes('hora') || lowerKey.includes('time')) {
                             standardRow.hora = row[key];
+                        } else if (lowerKey.includes('status')) {
+                            standardRow.status = row[key];
                         }
                     });
                     
